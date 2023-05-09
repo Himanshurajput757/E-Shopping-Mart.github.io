@@ -1,0 +1,67 @@
+﻿@model E_shoppingMart.Models.Addviewmodel
+
+@{
+    ViewBag.Title = "ViewAd";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<style>
+    td {
+        padding: 30px;
+        font-family:Calibri;
+        font-size:large;
+
+    }
+</style>
+<div class="row">
+    <div class="col-lg-12 col-md-12">
+        <img src="~/Content/img/live for fashion.jpg" class="img img-responsive" style="width:100%" />
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-lg-2 col-md-2">
+        <img src="~/Content/img/Poster World.jpg" class="img img-responsive" style=" height:500px;" />
+    </div>
+
+
+
+    <div class="col-lg-8 col-md-8">
+
+        <div>
+            @*<h3>Kids Wear</h3>*@
+            <h1>@Model.pro_name <small>AD-ID:@Model.pro_id</small></h1>
+        </div>
+
+        <img src="@Url.Content(Model.pro_image)" style="width:800PX; height:450PX" />
+
+        <div>
+            @*<h1>Description: </h1>
+            <h3>Good Product Can use...</h3>*@
+            <p>@Model.pro_des</p>
+        </div>
+
+        <table>
+
+            <tr> <td>Price: </td> <td>@Model.pro_price </td> </tr>
+            <tr> <td>Category: </td> <td>@Model.cat_name </td> </tr>
+            <tr> <td>Posted by: </td> <td>@Model.u_name <img src="@Url.Content(@Model.u_image)" style="width:40px; height:40px" /> </td> </tr>
+            <tr> <td>Contact: </td> <td>@Model.u_contact  </td> </tr>
+            <tr> <td colspan="2">
+    @if (Convert.ToInt32(Session["ad_id"]) == Convert.ToInt32(Model.pro_fk_user))
+    {
+        
+            @Html.ActionLink("Close This Ad", "DeleteAd", new { id = Model.pro_id})
+    }
+
+</td></tr>
+        </table>
+    </div>
+
+    <div class="col-lg-2 col-md-2">
+        <img src="~/Content/img/Poster World.jpg" class="img img-responsive" style=" height:500px;" />
+    </div>
+
+
+</div>
